@@ -23,4 +23,5 @@ if (window.self === window.top) {
 } else {
     // in iframe
     [].forEach.call(infoTooltips, tooltip => tooltip.addEventListener('click', showOverlay));
+    [].forEach.call(infoTooltips, tooltip => tooltip.addEventListener('touchend', showOverlay));
 }
