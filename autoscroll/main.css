@@ -38,9 +38,6 @@ body.index {
     padding: 20px;
 
     background: #eeeeeeee;
-    background-size: 137px;
-    pointer-events: none;
-    z-index: 10000;
 }
 
 .overlay h2 {

@@ -2,7 +2,8 @@ const infoTooltips = document.getElementsByClassName('info-tooltip');
 
 const showOverlay = (shouldScroll = false) => () => {
     const overlay = document.querySelector('.overlay');
-    overlay.classList.toggle('visible');
+    overlay.classList.add('visible');
+    overlay.addEventListener('click', () => overlay.classList.remove('visible'));
 
     const newIframeHeight = document.body.scrollHeight + overlay.scrollHeight;
 
