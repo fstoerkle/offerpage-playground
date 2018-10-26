@@ -8,7 +8,7 @@ function toggleOverlayOnClick(element, containerClass) {
         window.parent.postMessage({
             event: 'overlayOpened',
             newIframeHeight: document.body.scrollHeight + overlay.scrollHeight
-        });
+        }, '*');
     });
 }
 
