@@ -1,0 +1,51 @@
+html, body, * {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+iframe {
+    width: 400px;
+    height: 200px;
+}
+
+button {
+    font-weight: bold;
+}
+
+p {
+    width: 30%;
+}
+
+.overlay {
+    --margin: 50px;
+
+    display: none;
+
+    position: absolute;
+    box-sizing: border-box;
+    top: var(--margin);
+    right: var(--margin);
+    bottom: var(--margin);
+    left: var(--margin);
+    height: 300px;
+
+    /* background: #ff993399 url('newspaper.jpg'); */
+    background: url('newspaper.jpg');
+    background-size: 137px;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.iframe .overlay {
+    /* --margin: -200px; */
+}
+
+.visible {
+    display: block;
+}
