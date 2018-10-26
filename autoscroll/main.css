@@ -1,29 +1,30 @@
-html, body, * {
+body.index,
+.index * {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
-body {
+body.index {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 }
 
-iframe {
+.index iframe {
     width: 400px;
-    height: 500px;
+    height: 580px;
 }
 
-button {
+.index button {
     font-weight: bold;
 }
 
-p {
+.index p {
     width: 30%;
 }
 
 .overlay {
-    --margin: 50px;
+    --margin: 30px;
 
     display: none;
 
@@ -33,17 +34,26 @@ p {
     right: var(--margin);
     bottom: var(--margin);
     left: var(--margin);
-    height: 300px;
+    padding: 20px;
 
-    /* background: #ff993399 url('newspaper.jpg'); */
-    background: url('newspaper.jpg');
+    background: #eeeeeeee;
     background-size: 137px;
-    opacity: 0.8;
     pointer-events: none;
+    z-index: 10000;
 }
 
-.iframe .overlay {
-    /* --margin: -200px; */
+.overlay h2 {
+    font-size: 20px;
+}
+
+.overlay h3 {
+    font-size: 16px;
+}
+
+.overlay h2,
+.overlay h3,
+.overlay p {
+    margin: 10px 0;
 }
 
 .visible {

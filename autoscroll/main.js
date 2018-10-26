@@ -1,30 +1,26 @@
-const innerButton = document.querySelector('.iframe button');
+const infoTooltips = document.getElementsByClassName('info-tooltip');
 
-function toggleOverlayOnClick(element, containerClass) {
-    element.addEventListener('click', function () {
-        const overlay = document.querySelector(`${containerClass} .overlay`);
-        overlay.classList.toggle('visible');
+function showOverlay() {
+    const overlay = document.querySelector('.overlay');
+    overlay.classList.toggle('visible');
 
-        window.parent.postMessage({
-            event: 'overlayOpened',
-            newIframeHeight: document.body.scrollHeight + overlay.scrollHeight
-        }, '*');
-    });
+    const newIframeHeight = document.body.scrollHeight + overlay.scrollHeight;
+
+    window.parent.postMessage({ scrollIntoView: true }, '*');
 }
 
-if (innerButton) {
-    // in iframe
-    toggleOverlayOnClick(innerButton, '.iframe');
-} else {
+if (window.self === window.top) {
     // parent page
 
-    window.addEventListener('message', ({ data }) => {
-        // scroll to iframe
-        const [iframe] = document.getElementsByTagName('iframe');
-        iframe.scrollIntoView();
+    window.parent.addEventListener('message', ({ data }) => {
+        const { scrollIntoView } = data;
 
-        const { newIframeHeight } = data;
-        console.log({ newIframeHeight })
-        iframe.style.height = `${newIframeHeight}px`;
+        if (scrollIntoView) {
+            const [iframe] = document.getElementsByTagName('iframe');
+            iframe.scrollIntoView();
+        }
     }, false);
+} else {
+    // in iframe
+    [].forEach.call(infoTooltips, tooltip => tooltip.addEventListener('click', showOverlay));
 }
