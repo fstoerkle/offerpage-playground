@@ -25,5 +25,8 @@ if (window.self === window.top) {
     }, false);
 } else {
     // in iframe
-    [].forEach.call(infoTooltips, (tooltip, index) => tooltip.addEventListener('click', showOverlay(index === 0)));
+    const isTouchDevice = 'ontouchstart' in document.documentElement
+    const event = isTouchDevice ? 'touchend' : 'click';
+
+    [].forEach.call(infoTooltips, (tooltip, index) => tooltip.addEventListener(event, showOverlay(index === 0)));
 }
